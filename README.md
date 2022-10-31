@@ -18,9 +18,12 @@ options.InstanceName = Configuration.GetSection("RedisConnection").GetValue<stri
 "InstanceName": "RedisInstance_" // Cache key prefix
 }
 
+Use this interface to access methods - private readonly IDistributedCache _distributedCache;
+  https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-6.0
+  
 Access distributed cache methods by using this interface IDistributedCache.
 Download zip file from below link, extract and run "redis-server.exe". default post is 6379.
 Redis Server Window Setup: https://github.com/microsoftarchive/redis/releases/tag/win-3.0.504
 Redis GUI : https://redis.com/redis-enterprise/redis-insight/
 
-Azure Redis Pricing - https://azure.microsoft.com/en-in/pricing/details/cache/
+For Azure Redis Pricing - https://azure.microsoft.com/en-in/pricing/details/cache/
