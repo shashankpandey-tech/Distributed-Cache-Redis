@@ -1,7 +1,7 @@
 # Distributed-Cache-Redis
 Redis Cache
 
-# Setup On Window Machine -
+Setup On Window Machine -
 
 Package :
 Microsoft.Extensions.Caching.StackExchangeRedis
