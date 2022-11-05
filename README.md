@@ -1,7 +1,7 @@
 # Distributed-Cache-Redis
 Redis Cache
 
-Setup On Window Machine -
+Setup .Net Core Application (3.1) -
 
 Package :
 Microsoft.Extensions.Caching.StackExchangeRedis
@@ -14,24 +14,27 @@ options.InstanceName = Configuration.GetSection("RedisConnection").GetValue<stri
 });
 
 "RedisConnection": {
-"Configuration": "localhost:6379", // This one is where local redis server runing
+//Azure Redis Connection String
+//"Configuration": "redistest9090.redis.cache.windows.net:6380,password=sYesGg7wc6QQU76T8BFGLQi4vOGji2ZVMAzCaM5u2oM=,ssl=True,abortConnect=False",
+// Local redis server runing on current machine
 "InstanceName": "RedisInstance_" // Cache key prefix
 }
 
-Use this interface to access methods - private readonly IDistributedCache _distributedCache;
-  https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-6.0
+# Note : this will work for both windows redis server and Azure Redis Cache only need to change connection string.
   
-Access distributed cache methods by using this interface IDistributedCache.
+Use this interface to access methods - private readonly IDistributedCache _distributedCache;
+https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed?view=aspnetcore-6.0
+  
+# Access all distributed cache methods (get/post/remove) by using this interface IDistributedCache.
+    
 Download zip file from below link, extract and run "redis-server.exe". default post is 6379.
 Redis Server Window Setup: https://github.com/microsoftarchive/redis/releases/tag/win-3.0.504
 Redis GUI : https://redis.com/redis-enterprise/redis-insight/
 
 For Azure Redis Pricing - https://azure.microsoft.com/en-in/pricing/details/cache/
 
-In this video you will learn how to implement ASP.Net Distributed Caching. We use Redis as the cache data storage. The demo application created is using dotnet5 as the target framework.
-
-Topics Covered:
-
+  # More Info 
+  
 What is Caching?
 What are the use cases of Caching?
 How to implement Caching?
