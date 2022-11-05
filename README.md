@@ -13,6 +13,24 @@ options.Configuration = Configuration.GetSection("RedisConnection").GetValue<str
 options.InstanceName = Configuration.GetSection("RedisConnection").GetValue<string>("InstanceName");
 });
 
+public async Task SetCache(string key, bool value)
+{
+			var distributedCacheEntryOptions = new DistributedCacheEntryOptions
+			{
+				AbsoluteExpiration = DateTime.Now.AddMinutes(5),
+				SlidingExpiration = null,
+			};
+
+			var val = JsonConvert.SerializeObject(value);
+			await _distributedCache.SetStringAsync(key, val, distributedCacheEntryOptions);
+}
+
+public async Task<dynamic> GetCache(string key)
+{
+			var data = await _distributedCache.GetStringAsync(key);
+			return jsonData == null ? jsonData : JsonConvert.DeserializeObject<dynamic>(data);
+}
+    
 "RedisConnection": {
 //Azure Redis Connection String
 //"Configuration": "redistest9090.redis.cache.windows.net:6380,password=sYesGg7wc6QQU76T8BFGLQi4vOGji2ZVMAzCaM5u2oM=,ssl=True,abortConnect=False",
